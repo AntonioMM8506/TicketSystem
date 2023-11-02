@@ -1,0 +1,32 @@
+The RESTful API project is like 50% set up, your first task is finished setting up the project:
+
+Create your .env file
+On the root folder of the API project, create the .env file with the following info:
+THROTTLE_TTL=60
+THROTTLE_LIMIT=10
+LISTENING_PORT=4000
+Verify you won't be adding the .env file into the git repository.
+MongoDB connection:
+Create a new account in Mongo Atlas, you can use your account or your Enroute account (https://www.mongodb.com/atlas/database (Enlaces a un sitio externo.)), and create a new cluster.
+Get the connection string from Mongo Atlas and save it into the .env file (MONGODB_URI)
+Create the MongoDB connection file, following the same structure that we have already implemented in the project (look for the config folder)
+Install the MongoDB Module into the project (hint: app.module.ts file)
+Enable CSRF protection
+Install csurf library into the API project and enable CSRF protection globally into the API (https://docs.nestjs.com/security/csrf (Enlaces a un sitio externo.))
+Missing dependencies
+Install the following missing dependencies:
+Encryption library: argon2
+Auth middleware: Passport / Passport-JWT
+Validation Library: Joi
+Validate core env vars
+We need to ensure we have available and in the correct type the core env vars, these vars are (https://docs.nestjs.com/techniques/configuration#schema-validation (Enlaces a un sitio externo.)):
+LISTENING_PORT = required and number and should be 4000
+THROTTLE_TTL = required and number
+THROTTLE_LIMIT = required, number and should be less than 15
+MONGODB_URI = required and string
+
+
+https://github.com/eu-repo/restful-api-project-AntonioMM8506/tree/master
+https://docs.nestjs.com/cli/overview
+https://docs.nestjs.com/techniques/mongodb
+https://docs.nestjs.com/techniques/configuration#schema-validation
