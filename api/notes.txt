@@ -30,3 +30,31 @@ https://github.com/eu-repo/restful-api-project-AntonioMM8506/tree/master
 https://docs.nestjs.com/cli/overview
 https://docs.nestjs.com/techniques/mongodb
 https://docs.nestjs.com/techniques/configuration#schema-validation
+
+
+
+
+
+
+
+    ThrottlerModule.forRoot([{
+      ttl: 6000,
+      limit: 10
+    }])
+
+
+
+Controller => What does the user is gonna see
+Service => Business Logic
+Module => Configuration, what libraries it should use in order to run
+
+      app.module.ts
+      //Joi vaidation Schema
+      /*
+      validationSchema: Joi.object({
+        LISTENIG_PORT: Joi.number().default(process.env.LISTENING_PORT).required(),
+        THROTTLE_TTL: Joi.number().default(process.env.THROTTLE_TTL).required(),
+        THROTTLE_LIMIT: Joi.number().default(process.env.THROTTLE_LIMIT).required(),
+        MONGODB_URI: Joi.string().default(process.env.MONGODB_URI).required(),
+      }),
+      */

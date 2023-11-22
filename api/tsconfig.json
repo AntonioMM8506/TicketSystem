@@ -17,7 +17,7 @@
     "strictBindCallApply": false,
     "forceConsistentCasingInFileNames": false,
     "noFallthroughCasesInSwitch": false,
-    "types": ["babel__generator", "@types/jest"],
+    "types": ["@types/jest", "babel__generator"],
     "paths": {
       "@app/*" : ["src/*"],
       "@config/*": ["src/config/*"],
