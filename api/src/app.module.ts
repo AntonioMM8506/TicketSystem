@@ -19,10 +19,10 @@ import 'dotenv/config';
 //Features
 import { UsersModule } from '@features/users/users.module';
 import { AuthModule } from './features/auth/auth.module';
+import { EmailModule } from './features/email/email.module';
 
 @Module({
   imports: [
-
     ConfigModule.forRoot({
       isGlobal: true, //Sets all env variables as global
       cache: true, //optimize the speed of loading for env variables
@@ -55,7 +55,8 @@ import { AuthModule } from './features/auth/auth.module';
     }),
     
     UsersModule,
-    AuthModule, 
+    AuthModule,
+    EmailModule, 
     //ProductsModule
   ],
   controllers: [AppController],
