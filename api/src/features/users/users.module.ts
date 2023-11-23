@@ -4,6 +4,7 @@ import { UsersController } from './users.controller';
 
 import { MongooseModule } from '@nestjs/mongoose';
 import { User, UserSchema } from './entities/user.entity';
+import { TypedEventEmitter } from '@app/event-emitter/typed-event-emitter.class';
 
 @Module({
   imports:[
@@ -15,7 +16,7 @@ import { User, UserSchema } from './entities/user.entity';
     ]),
   ],
   controllers: [UsersController],
-  providers: [UsersService],
+  providers: [UsersService, TypedEventEmitter],
   exports: [UsersService],
 })//End of @Module
 

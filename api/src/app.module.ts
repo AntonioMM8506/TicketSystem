@@ -9,7 +9,7 @@ import { throttlerConfig, mongodbConfig } from '@config/index';
 
 // Import own app files
 import { AppController } from './app.controller';
-import { AppService } from './app.service';
+import { AppService } from './app.service'; 
 
 //Database connection and schema validation 
 import { MongooseModule } from '@nestjs/mongoose';
@@ -20,6 +20,8 @@ import 'dotenv/config';
 import { UsersModule } from '@features/users/users.module';
 import { AuthModule } from './features/auth/auth.module';
 import { EmailModule } from './features/email/email.module';
+
+import { EventEmitterModule } from '@nestjs/event-emitter';
 
 @Module({
   imports: [
@@ -57,7 +59,8 @@ import { EmailModule } from './features/email/email.module';
     UsersModule,
     AuthModule,
     EmailModule, 
-    //ProductsModule
+    EventEmitterModule,
+    EventEmitterModule.forRoot()
   ],
   controllers: [AppController],
   providers: [AppService],

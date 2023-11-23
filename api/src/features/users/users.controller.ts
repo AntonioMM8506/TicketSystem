@@ -2,15 +2,21 @@ import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/commo
 import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
-import { ObjectId } from 'mongoose';
+import { TypedEventEmitter } from '@app/event-emitter/typed-event-emitter.class';
+
+
 
 @Controller('users')
 export class UsersController {
-  constructor(private readonly usersService: UsersService) {}
+  constructor(private readonly usersService: UsersService, private readonly eventEmitter: TypedEventEmitter) {}
 
   @Post()
-  create(@Body() createUserDto: CreateUserDto) {
-    return this.usersService.create(createUserDto);
+  async create(@Body() createUserDto: CreateUserDto) {
+    this.eventEmitter.emit('user.welcome', {
+      name: createUserDto.name,
+      email: createUserDto.email
+    })
+    return await this.usersService.create(createUserDto);
   }
   
 
