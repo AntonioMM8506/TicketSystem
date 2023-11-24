@@ -16,7 +16,9 @@ import { TypedEventEmitter } from '@app/event-emitter/typed-event-emitter.class'
     ]),
   ],
   controllers: [UsersController],
-  providers: [UsersService, TypedEventEmitter],
+  providers: [
+    UsersService, 
+    TypedEventEmitter],
   exports: [UsersService],
 })//End of @Module
 

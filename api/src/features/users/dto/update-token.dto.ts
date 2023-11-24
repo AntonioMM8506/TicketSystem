@@ -7,7 +7,9 @@ import { CreateUserDto } from './create-user.dto';
 export class UpdateTokenDto extends PartialType(CreateUserDto) {
     refreshToken?: string;
 
+    resetToken?: string;
+
     @IsDate()
     @Type(() => Date)
-    lastconnection: Date;
+    lastconnection?: Date;
 }

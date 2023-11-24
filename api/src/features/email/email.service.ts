@@ -17,9 +17,9 @@ export class EmailService {
     await this.mailerService.sendMail({
       to: email,
       subject,
-      template: __dirname.concat("/templates/welcome.ejs"),
+      template: __dirname.concat("/templates/welcome.ejs"), 
       context: {
-        name,
+        name
       },
     });
   }
@@ -33,29 +33,12 @@ export class EmailService {
     await this.mailerService.sendMail({
       to: email,
       subject,
-      template: './forgot-password',
+      template: __dirname.concat("/templates/forgot-password.ejs"),
       context: {
         link,
         name,
       },
     });
   }
-
-  /*
-  async welcomeEmail(data) {
-    const { email, name } = data;
-
-    const subject = `Welcome to Company: ${name}`;
-
-    await this.mailerService.sendMail({
-      to: email,
-      subject,
-      template: './welcome',
-      context: {
-        name,
-      },
-    });
-  }//End of WelcomeEmail
-  */
 
 }
