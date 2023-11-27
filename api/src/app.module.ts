@@ -18,10 +18,11 @@ import 'dotenv/config';
 
 //Features
 import { UsersModule } from '@features/users/users.module';
-import { AuthModule } from './features/auth/auth.module';
-import { EmailModule } from './features/email/email.module';
-
+import { AuthModule } from '@features/auth/auth.module';
+import { EmailModule } from '@features/email/email.module';
 import { EventEmitterModule } from '@nestjs/event-emitter';
+import { TicketsModule } from '@features/tickets/tickets.module';
+import { CategoryModule } from '@features/category/category.module';
 
 @Module({
   imports: [
@@ -55,12 +56,13 @@ import { EventEmitterModule } from '@nestjs/event-emitter';
         uri: configService.get<string>('database.mongoConnectionString')
       })
     }),
-    
     UsersModule,
     AuthModule,
     EmailModule, 
     EventEmitterModule,
-    EventEmitterModule.forRoot()
+    EventEmitterModule.forRoot(),
+    TicketsModule,
+    CategoryModule
   ],
   controllers: [AppController],
   providers: [AppService],

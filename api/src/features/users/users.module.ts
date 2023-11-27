@@ -9,8 +9,8 @@ import { TypedEventEmitter } from '@app/event-emitter/typed-event-emitter.class'
 @Module({
   imports:[
     MongooseModule.forFeature([
-      {
-        name: User.name, //It is not the property of the user entity, it's more like a metaproperty
+      {//It is not the property of the user entity, it's more like a metaproperty
+        name: User.name, 
         schema: UserSchema
       },
     ]),

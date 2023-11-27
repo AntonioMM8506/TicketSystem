@@ -11,20 +11,25 @@ export class User {
     })
     name: string
 
+
     @Prop({
         required: true,
     })
     lastname: string
 
+
     @Prop({
         unique: true,
+        required: true
     })
     email: string
+
 
     @Prop({
         required: true,
     })
     password: string
+
 
     @Prop({
         required: true,

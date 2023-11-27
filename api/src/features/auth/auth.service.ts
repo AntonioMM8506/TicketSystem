@@ -14,8 +14,9 @@ export class AuthService {
     private userService: UsersService,
     private jwtService: JwtService,
     private configService: ConfigService,
-  ) {}
+  ) {}//End of Constructor
 
+  //Authentication methods -------------------------------------------------------------
   async signUp(createUserDto: CreateUserDto): Promise<any> {
     // Check if user exists
     const userExists = await this.userService.findByEmail(createUserDto.email)
@@ -32,8 +33,8 @@ export class AuthService {
     // Get tokens
     const tokens = await this.getTokens(newUser._id, newUser.email)
     await this.updateRefreshToken(newUser._id, tokens.refreshToken)
+    
     return tokens
-
   }//End of signUp
 
 
@@ -48,8 +49,8 @@ export class AuthService {
     }
     const tokens = await this.getTokens(user._id, user.email)
     await this.updateRefreshToken(user._id, tokens.refreshToken)
+    
     return tokens
-
   }//End of signIn
 
 
@@ -58,6 +59,7 @@ export class AuthService {
   }//End of logout
 
 
+  //Token Methods ----------------------------------------------------------------------
   async hasData(data: string) {
     return await argon2.hash(data)
   }//End of hasData
@@ -121,6 +123,7 @@ export class AuthService {
 
     const tokens = await this.getTokens(user.id, user.email)
     await this.updateRefreshToken(user.id, tokens.refreshToken)
+
     return tokens
   }//End of refresh Tokens
 
@@ -138,7 +141,7 @@ export class AuthService {
           expiresIn: '2h',
         },
       )
-    )
+    );
 
     return resetToken;
   }//End of ResetToken
@@ -146,7 +149,6 @@ export class AuthService {
 
   async updateResetToken(userId: any, resetToken: string) {
     const hashedResetToken = await this.hasData(resetToken)
-
     await this.userService.updateToken(userId, {resetToken: hashedResetToken})
   }//End of updateRefreshToken
 
@@ -158,6 +160,5 @@ export class AuthService {
     return token
   }//End of resetPassword
   
-
 
 }//End of AuthService
