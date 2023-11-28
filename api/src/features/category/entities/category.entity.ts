@@ -3,7 +3,7 @@ import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose'
 import { HydratedDocument } from 'mongoose'
 import { Factory } from "nestjs-seeder";
 
-export type UserDocument = HydratedDocument<Category>
+export type CategoryDocument = HydratedDocument<Category>
 
 @Schema()
 export class Category {
@@ -24,7 +24,7 @@ export class Category {
 
 
     @Prop({
-        default: 1
+        default: 0
     })
     numberoftickets?: number
 

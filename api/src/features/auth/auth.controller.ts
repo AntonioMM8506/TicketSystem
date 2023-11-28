@@ -14,7 +14,9 @@ import { CreateUserDto } from '@features/users/dto/create-user.dto'
 
 @Controller('auth')
 export class AuthController {
-  constructor(private readonly authService: AuthService, private readonly eventEmitter: TypedEventEmitter) {}
+  constructor(
+    private readonly authService: AuthService, 
+    private readonly eventEmitter: TypedEventEmitter) {}
   //End of constructor
 
 

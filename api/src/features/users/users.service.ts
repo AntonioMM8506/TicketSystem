@@ -49,7 +49,7 @@ export class UsersService {
 
 
   async findOne(id: any) {
-    const user = await this.userModel.findById({_id: id}).exec(); //id
+    const user = await this.userModel.findById(id).exec(); //id
     return user;
   }//End of findOne
 
