@@ -7,20 +7,17 @@ import { User, UserSchema } from './entities/user.entity';
 import { TypedEventEmitter } from '@app/event-emitter/typed-event-emitter.class';
 
 @Module({
-  imports:[
+  imports: [
     MongooseModule.forFeature([
-      {//It is not the property of the user entity, it's more like a metaproperty
-        name: User.name, 
-        schema: UserSchema
+      {
+        //It is not the property of the user entity, it's more like a metaproperty
+        name: User.name,
+        schema: UserSchema,
       },
     ]),
   ],
   controllers: [UsersController],
-  providers: [
-    UsersService, 
-    TypedEventEmitter],
+  providers: [UsersService, TypedEventEmitter],
   exports: [UsersService],
-})//End of @Module
-
-
+}) //End of @Module
 export class UsersModule {}

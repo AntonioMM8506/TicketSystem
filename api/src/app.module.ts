@@ -6,12 +6,11 @@ import { ThrottlerModule } from '@nestjs/throttler';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { throttlerConfig, mongodbConfig } from '@config/index';
 
-
 // Import own app files
 import { AppController } from './app.controller';
-import { AppService } from './app.service'; 
+import { AppService } from './app.service';
 
-//Database connection and schema validation 
+//Database connection and schema validation
 import { MongooseModule } from '@nestjs/mongoose';
 import * as Joi from 'joi';
 import 'dotenv/config';
@@ -35,7 +34,7 @@ import { CategoryModule } from '@features/category/category.module';
         THROTTLE_TTL: Joi.number().default(process.env.THROTTLE_TTL),
         THROTTLE_LIMIT: Joi.number().default(process.env.THROTTLE_LIMIT),
         MONGODB_URI: Joi.string().default(process.env.MONGODB_URI),
-      }), 
+      }),
     }),
     // Rate limit protection
     ThrottlerModule.forRootAsync({
@@ -53,19 +52,18 @@ import { CategoryModule } from '@features/category/category.module';
       imports: [ConfigModule],
       inject: [ConfigService],
       useFactory: (configService: ConfigService) => ({
-        uri: configService.get<string>('database.mongoConnectionString')
-      })
+        uri: configService.get<string>('database.mongoConnectionString'),
+      }),
     }),
     UsersModule,
     AuthModule,
-    EmailModule, 
+    EmailModule,
     EventEmitterModule,
     EventEmitterModule.forRoot(),
     TicketsModule,
-    CategoryModule
+    CategoryModule,
   ],
   controllers: [AppController],
   providers: [AppService],
 })
-
 export class AppModule {}

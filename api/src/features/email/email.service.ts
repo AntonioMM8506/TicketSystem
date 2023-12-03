@@ -3,7 +3,6 @@ import { Injectable } from '@nestjs/common';
 import { OnEvent } from '@nestjs/event-emitter';
 import { EventPayloads } from '@app/interface/event-types.interface';
 
-
 @Injectable()
 export class EmailService {
   constructor(private readonly mailerService: MailerService) {}
@@ -17,13 +16,13 @@ export class EmailService {
     await this.mailerService.sendMail({
       to: email,
       subject,
-      template: __dirname.concat("/templates/welcome.ejs"), 
+      template: __dirname.concat('/templates/welcome.ejs'),
       context: {
-        name
+        name,
       },
     });
   }
-  
+
   @OnEvent('user.reset-password')
   async forgotPasswordEmail(data: EventPayloads['user.reset-password']) {
     const { name, email, link } = data;
@@ -33,12 +32,11 @@ export class EmailService {
     await this.mailerService.sendMail({
       to: email,
       subject,
-      template: __dirname.concat("/templates/forgot-password.ejs"),
+      template: __dirname.concat('/templates/forgot-password.ejs'),
       context: {
         link,
         name,
       },
     });
   }
-
 }
