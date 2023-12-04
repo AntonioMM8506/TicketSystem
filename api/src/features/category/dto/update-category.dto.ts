@@ -10,8 +10,10 @@ export class UpdateCategoryDto extends PartialType(CreateCategoryDto) {
   name: string;
 
   @IsOptional()
+  @ApiProperty()
   description: string;
 
   @IsOptional()
+  @ApiProperty()
   numberoftickets?: number;
 }

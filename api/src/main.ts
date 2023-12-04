@@ -25,7 +25,7 @@ async function bootstrap() {
     .setVersion('1.0')
     .build();
   const swaggerDocument = SwaggerModule.createDocument(app, swaggerConfig);
-  SwaggerModule.setup('docs/api', app, swaggerDocument);
+  SwaggerModule.setup('docs/api', app, swaggerDocument); //localhost:3000/docs/api => to see the swagger report
 
   //Port to be accesible
   await app.listen(3000);

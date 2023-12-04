@@ -45,8 +45,6 @@ export class AuthService {
     const user = await this.userService.findByEmail(data.email);
     if (!user) throw new BadRequestException('User does not exists');
 
-    //console.log(user.password);
-    //console.log(data.password);
     const passwordMatches = await argon2.verify(user.password, data.password);
     if (!passwordMatches) {
       throw new BadRequestException('Password is incorrect');
@@ -146,7 +144,7 @@ export class AuthService {
   } //End of refreshTokensByEmail
 
   //------------------------------------------------------------------------------
-  //Just generating the Token for the password reset
+  //Generating the Token for the password reset
   async resetToken(email: string) {
     const resetToken = await Promise.resolve(
       this.jwtService.signAsync(
@@ -164,7 +162,7 @@ export class AuthService {
 
   async updateResetToken(userId: any, resetToken: string) {
     const hashedResetToken = await this.hasData(resetToken);
-    await this.userService.updateToken(userId, {
+    return await this.userService.updateToken(userId, {
       resetToken: hashedResetToken,
     });
   } //End of updateRefreshToken
@@ -173,6 +171,9 @@ export class AuthService {
     const user = await this.userService.findByEmail(data.email);
     const token = await this.resetToken(user.email);
     await this.updateResetToken(user._id, token);
-    return token;
+    const updatedPwd = (
+      await this.userService.findByEmail(data.email)
+    ).updateOne({ password: data.password });
+    return updatedPwd;
   } //End of resetPassword
 } //End of AuthService

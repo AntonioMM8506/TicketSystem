@@ -17,10 +17,12 @@ export class CreateUserDto {
 
   @IsNotEmpty()
   @MinLength(2)
+  @ApiProperty()
   lastname: string;
 
   @IsNotEmpty()
   @IsEmail()
+  @ApiProperty()
   email: string;
 
   // /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{10,}$/
@@ -40,6 +42,7 @@ export class CreateUserDto {
   password: string;
 
   @IsNotEmpty()
+  @ApiProperty()
   gender: string;
 
   @IsOptional()
@@ -55,5 +58,6 @@ export class CreateUserDto {
   @IsNotEmpty()
   @Type(() => Date)
   @IsDate()
+  @ApiProperty()
   readonly birthdate: Date;
 } //End of class CreateUserDto

@@ -11,16 +11,18 @@ export class UpdateTicketDto extends PartialType(CreateTicketDto) {
   title?: string;
 
   @MinLength(2)
+  @ApiProperty()
   description?: string;
 
   @IsOptional()
+  @ApiProperty()
   category?: string;
 
   @IsOptional()
+  @ApiProperty()
   @Type(() => Date)
   duedate?: Date;
 
   @ApiProperty()
-  //@Matches()
   assignee?: string;
 }
