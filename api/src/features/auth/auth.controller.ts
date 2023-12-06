@@ -5,8 +5,8 @@ import { AuthDto } from './dto/auth.dto';
 import { TypedEventEmitter } from '@app/event-emitter/typed-event-emitter.class';
 import { UpdateUserDto } from '../users/dto/update-user.dto';
 import { CreateUserDto } from '@features/users/dto/create-user.dto';
-// Import guards
 import { AccessTokenGuard, RefreshTokenGuard } from './guards';
+import { Inject, forwardRef } from '@nestjs/common';
 
 @Controller('auth')
 export class AuthController {
@@ -55,7 +55,6 @@ export class AuthController {
   @Post('resetPassword')
   async resetPassword(@Body() body: UpdateUserDto) {
     const tok = await this.authService.resetToken(body.email);
-
     this.eventEmitter.emit('user.reset-password', {
       name: body.name,
       email: body.email,

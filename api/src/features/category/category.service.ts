@@ -8,15 +8,11 @@ import { InjectModel } from '@nestjs/mongoose';
 import { CreateCategoryDto } from './dto/create-category.dto';
 import { UpdateCategoryDto } from './dto/update-category.dto';
 import { Category, CategoryDocument } from './entities/category.entity';
-import { UsersService } from '@features/users/users.service';
-import { ConfigService } from '@nestjs/config';
 
 @Injectable()
 export class CategoryService {
   constructor(
     @InjectModel(Category.name) private categoryModel: Model<CategoryDocument>,
-    private userService: UsersService,
-    private configService: ConfigService,
   ) {} //End of Constructor
 
   async create(

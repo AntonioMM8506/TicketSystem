@@ -6,20 +6,16 @@ import {
 import { Model } from 'mongoose';
 import { CreateTicketDto } from './dto/create-ticket.dto';
 import { UpdateTicketDto } from './dto/update-ticket.dto';
-import { AuthService } from '../auth/auth.service';
-import { CategoryService } from '../category/category.service';
-import { InjectModel } from '@nestjs/mongoose';
 import { Ticket, TicketDocument } from './entities/ticket.entity';
+import { CategoryService } from '@features/category/category.service';
+import { InjectModel } from '@nestjs/mongoose';
 import { UsersService } from '@features/users/users.service';
-import { ConfigService } from '@nestjs/config';
 
 @Injectable()
 export class TicketsService {
   constructor(
     @InjectModel(Ticket.name) private ticketModel: Model<TicketDocument>,
     private userService: UsersService,
-    private configService: ConfigService,
-    private authService: AuthService,
     private categoryService: CategoryService,
   ) {} //End of constructor
 
@@ -32,7 +28,6 @@ export class TicketsService {
     const newCategory = await this.categoryService.findByTitle(
       createTicketDto.category,
     );
-    //Expects an existent category, otherwise the query cannot be completed.
     if (!newCategory) {
       throw new BadRequestException(
         'Category Does not exist. Please select an existing Category',
@@ -49,7 +44,8 @@ export class TicketsService {
 
     //Updates counter of Category by 1
     await this.categoryService.increaseCounter(createTicketDto.category);
-    return await new this.ticketModel(newTicket).save();
+    const createdTicket = await new this.ticketModel(newTicket).save();
+    return createdTicket;
   } //End of create
 
   //id => user id; find all by user id
@@ -174,7 +170,7 @@ export class TicketsService {
   async softRemove(id: any, req: any) {
     const userId = req.user['email'];
     if (!userId) {
-      throw new ForbiddenException('User not loggen in');
+      throw new ForbiddenException('User not logged in');
     }
 
     const getTicket = await this.ticketModel.findById(id).exec();

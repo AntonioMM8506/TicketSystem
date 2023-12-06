@@ -12,7 +12,10 @@ import { AccessTokenGuard, RefreshTokenGuard, ResetTokenGuard } from './guards';
 import { TypedEventEmitter } from '@app/event-emitter/typed-event-emitter.class';
 
 @Module({
-  imports: [UsersModule, JwtModule.register({})],
+  imports: [
+    UsersModule,
+    JwtModule.register({}),
+  ],
   controllers: [AuthController],
   providers: [
     AuthService,
