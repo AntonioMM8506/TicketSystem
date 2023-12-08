@@ -28,7 +28,7 @@ export class UsersController {
   @ApiOperation({ summary: 'Create new User' })
   @ApiResponse({
     status: 201,
-    description: 'Create a new user into the database',
+    description: 'Create a new user into the database given the Body',
   })
   async create(@Body() createUserDto: CreateUserDto) {
     this.eventEmitter.emit('user.welcome', {
@@ -42,7 +42,7 @@ export class UsersController {
   @ApiOperation({ summary: 'Get All users' })
   @ApiResponse({
     status: 200,
-    description: 'Get All existent users in the database',
+    description: 'Get All existent Users',
   })
   findAll() {
     return this.usersService.findAll();
@@ -52,7 +52,7 @@ export class UsersController {
   @ApiOperation({ summary: 'Get User by User Id' })
   @ApiResponse({
     status: 200,
-    description: 'Seeks for the user by his/her given id',
+    description: 'Seeks for the user by his/her given id as a Parameter',
   })
   findOne(@Param('id') id: any) {
     return this.usersService.findOne(id);
@@ -61,9 +61,9 @@ export class UsersController {
   @Patch(':id')
   @ApiOperation({ summary: 'Edit user by Used Id' })
   @ApiResponse({
-    status: 200,
+    status: 201,
     description:
-      'Given the user Id, and the body params the selected user fields can be updated',
+      'Updates an User, looking for them with the given Id as a Parameter, and the updated fields as the Body',
   })
   update(@Param('id') id: any, @Body() updateUserDto: UpdateUserDto) {
     return this.usersService.update(id, updateUserDto);
@@ -73,7 +73,8 @@ export class UsersController {
   @ApiOperation({ summary: 'Delete user by User Id' })
   @ApiResponse({
     status: 200,
-    description: 'Deletes the selected user by given Id permanently',
+    description:
+      'Deletes permanently the selected user by given Id as a Parameter',
   })
   remove(@Param('id') id: any) {
     return this.usersService.remove(id);

@@ -1,1 +1,13 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-24ddc0f5d75046c5622901739e7c5dd533143b0c8e959d652212380cedb1ea36.svg)](https://classroom.github.com/a/CwAAdM9j)
+Add the following Env variables to the api project
+THROTTLE_TTL=100
+THROTTLE_LIMIT=10
+LISTENING_PORT=4000
+MONGODB_URI=
+MONGO_USERNAME=
+MONGO_PASSWORD=
+LISTENING_PORT=
+JWT_ACCESS_SECRET=
+JWT_REFRESH_SECRET=
+EMAIL_USER=
+EMAIL_PASS=
+EMAIL_PORTFOLIO=

@@ -10,7 +10,6 @@ import { AuthDto } from './dto/auth.dto';
 import { CreateUserDto } from '@features/users/dto/create-user.dto';
 import { UsersService } from '@features/users/users.service';
 import { UpdateUserDto } from '../users/dto/update-user.dto';
-import { Inject, forwardRef } from '@nestjs/common';
 
 @Injectable()
 export class AuthService {

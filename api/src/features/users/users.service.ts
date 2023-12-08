@@ -17,7 +17,6 @@ export class UsersService {
     if (userExists) {
       throw new BadRequestException('User already exists!');
     }
-
     const newUser = { ...createUserDto };
 
     const hash = await this.hasData(createUserDto.password);
