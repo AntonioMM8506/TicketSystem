@@ -3,16 +3,21 @@ https://docs.nestjs.com/cli/overview
 https://docs.nestjs.com/techniques/mongodb
 https://docs.nestjs.com/techniques/configuration#schema-validation
 
+https://devhints.io/yarn
+https://initialcommit.com/blog/git-commit-messages-best-practices
+https://12factor.net/
+https://en.wikipedia.org/wiki/Argon2
+https://jwt.io/introduction
+https://www.youtube.com/watch?v=Af4M8GMoxi4&themeRefresh=1
+https://www.oracle.com/technical-resources/articles/enterprise-architecture/mock-shortcomings.html
+https://medium.com/javascript-scene/mocking-is-a-code-smell-944a70c90a6a
+https://www.mygreatlearning.com/blog/top-essential-docker-commands/
 
+Labs
+https://codefresh.io/learn/github-actions/github-actions-workflows-basics-examples-and-a-quick-tutorial/#section-quick-tutorial-creating-starter-workflows
+https://blog.devgenius.io/learn-ci-cd-with-github-actions-to-deploy-a-nestjs-app-to-heroku-8feb715d3ce7
+https://abhayahire.medium.com/react-app-ci-cd-with-github-actions-and-aws-s3-b23bc43445ff
 
-
-
-
-
-    ThrottlerModule.forRoot([{
-      ttl: 6000,
-      limit: 10
-    }])
 
 
 
@@ -20,13 +25,3 @@ Controller => What does the user is gonna see
 Service => Business Logic
 Module => Configuration, what libraries it should use in order to run
 
-      app.module.ts
-      //Joi vaidation Schema
-      /*
-      validationSchema: Joi.object({
-        LISTENIG_PORT: Joi.number().default(process.env.LISTENING_PORT).required(),
-        THROTTLE_TTL: Joi.number().default(process.env.THROTTLE_TTL).required(),
-        THROTTLE_LIMIT: Joi.number().default(process.env.THROTTLE_LIMIT).required(),
-        MONGODB_URI: Joi.string().default(process.env.MONGODB_URI).required(),
-      }),
-      */
